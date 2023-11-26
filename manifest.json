@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "ブルスクアドオン v1.0.0",
+    "description": "ブルースクリーン(BSOD)風の画面を表示できるよ\nby YuuhaLand",
+    "uuid": "7937406c-c333-4f5d-a538-7cd62164891f",
+    "version": [ 1, 0, 0 ],
+    "min_engine_version": [ 1, 13, 0 ]
+  },
+  "modules": [
+    {
+      "type": "resources",
+      "uuid": "dbde92ca-ae1e-4351-8c42-0cbb54255876",
+      "version": [ 1, 0, 0 ]
+    }
+  ]
+}

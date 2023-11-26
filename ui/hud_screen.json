@@ -1,0 +1,135 @@
+{
+  "namespace": "hud",
+
+  "hud_title_text": {
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "((#hud_title_text_string - '§x') =  #hud_title_text_string)",
+        "target_property_name": "#visible"
+      }
+    ]
+  },
+
+  "bsod_content": {
+    "type": "panel",
+    "size": [ "100%", "100%" ],
+    "propagate_alpha": true,
+    "alpha": "@hud.anim_title_text_alpha_in",
+    "layer": 500,
+    "bindings": [
+      {
+        "binding_name": "#hud_title_text_string",
+        "binding_type": "global"
+      },
+      {
+        "binding_type": "view",
+        "source_property_name": "(not ((#hud_title_text_string - '§x') =  #hud_title_text_string))",
+        "target_property_name": "#visible"
+      }
+    ],
+    "controls": [
+      {
+        "back_blue": {
+          "type": "image",
+          "size": [ "200% ", "200%" ],
+          "texture": "textures/ui/White",
+          "color": [ 0.000, 0.000, 0.639 ],
+          "layer": -2
+        }
+      },
+      {
+        "texts": {
+          "type": "stack_panel",
+          "size": [ "100%", "100%c" ],
+          "controls": [
+            {
+              "header": {
+                "type": "panel",
+                "size": [ "100%", 10 ],
+                "controls": [
+                  {
+                    "header_text": {
+                      "type": "label",
+                      "size": [ "default", 10 ],
+                      "text": "#text",
+                      "color": [ 0.000, 0.000, 0.639 ],
+                      "layer": 1,
+                      "bindings": [
+                        {
+                          "binding_name": "#hud_title_text_string",
+                          "binding_name_override": "#text",
+                          "binding_type": "global"
+                        }
+                      ],
+                      "controls": [
+                        {
+                          "header_back": {
+                            "type": "image",
+                            "size": [ "100% + 2px", "100%" ],
+                            "texture": "textures/ui/White",
+                            "color": [ 0.663, 0.663, 0.663 ],
+                            "layer": -1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "padding": {
+                "type": "panel",
+                "size": [ 0, 10 ]
+              }
+            },
+            {
+              "text_label": {
+                "type": "label",
+                "size": [ "100%", "default" ],
+                "text": "#text",
+                "text_alignment": "center",
+                "color": [ 1, 1, 1 ],
+                "layer": 1,
+                "bindings": [
+                  {
+                    "binding_name": "#hud_subtitle_text_string",
+                    "binding_name_override": "#text",
+                    "binding_type": "global"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "hud_content": {
+    "modifications": [
+      {
+        "array_name": "controls",
+        "operation": "insert_front",
+        "value": [
+          {
+            "bsod_content_area": {
+              "type": "panel",
+              "factory": {
+                "name": "hud_title_text_factory",
+                "control_ids": {
+                  "hud_title_text": "bsod_content@hud.bsod_content"
+                }
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
